@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Arte</title>
+  <link rel="stylesheet" href="../css/index.css"> <!-- Enlaza con tu archivo CSS -->
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./galeria.html">Galería</a></li>
+        <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="./contactanos.html">Contáctanos</a></li>
+        <li><a href="./login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  
+
+  <!-- Carrusel de Imágenes -->
+  <section id="carousel" class="carousel">
+    <div class="carousel-container">
+      <img src="../img/imagen1.jpg" alt="Arte 1">
+      <img src="../img/imagen2.jpg" alt="Arte 2">
+      <img src="../img/imagen3.jpg" alt="Arte 3">
+      <img src="../img/imagen4.jpg" alt="Arte 4">
+      <img src="../img/imagen5.jpg" alt="Arte 5">
+      <img src="../img/imagen6.jpg" alt="Arte 6">
+    </div>
+    <button class="carousel-nav left" onclick="moveCarousel('left')">&#10094;</button>
+    <button class="carousel-nav right" onclick="moveCarousel('right')">&#10095;</button>
+  </section>
+
+ 
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Galería de Arte. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Script para mover el carrusel -->
+  <script>
+    let currentIndex = 0;
+
+    function moveCarousel(direction) {
+      const images = document.querySelectorAll('.carousel-container img');
+      const totalImages = images.length;
+
+      if (direction === 'left') {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      } else if (direction === 'right') {
+        currentIndex = (currentIndex + 1) % totalImages;
+      }
+
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+  </script>
+</body>
+</html>
+
+
+ 
+
+
+

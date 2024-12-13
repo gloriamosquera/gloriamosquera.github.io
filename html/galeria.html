@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Arte</title>
+
+  <link rel="stylesheet" href="../css/galeria.css">
+  <style>
+    /* Estilos básicos */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Estilos de la galería */
+    #gallery {
+      padding: 20px;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .gallery-item {
+      margin: 10px;
+      flex-basis: 30%;
+      max-width: 30%;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    /* Estilos del modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 60%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .modal-content p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 25px;
+      color: #333;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./galeria.html">Galería</a></li>
+        <li><a href="#about">Sobre Nosotros</a></li>
+        <li><a href="#contact">Contáctanos</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Galería -->
+  <section id="gallery">
+    <h2>Galería de Arte</h2>
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="../img/imagen1.jpg" alt="Arte 1" onclick="openModal('../img/imagen1.jpg', 'Este es un cuadro muy famoso de la era moderna. Representa la lucha interna del ser humano.')">
+      </div>
+      <div class="gallery-item">
+        <img src="../img/imagen2.jpg" alt="Arte 2" onclick="openModal('../img/imagen2.jpg', 'Un óleo sobre lienzo, una obra que destaca por sus colores vibrantes y sus trazos firmes.')">
+      </div>
+      <div class="gallery-item">
+        <img src="../img/imagen3.jpg" alt="Arte 3" onclick="openModal('../img/imagen3.jpg', 'Pintura abstracta que juega con la geometría y el color para transmitir una sensación de movimiento.')">
+      </div>
+      <div class="gallery-item">
+        <img src="../img/imagen4.jpg" alt="Arte 4" onclick="openModal('../img/imagen4.jpg', 'Una obra maestra del cubismo, que desafía la perspectiva tradicional y juega con la forma.')">
+      </div>
+      <div class="gallery-item">
+        <img src="../img/imagen5.jpg" alt="Arte 5" onclick="openModal('../img/imagen5.jpg', 'Retrato de una mujer de la época renacentista, mostrando detalles delicados en su vestimenta y su expresión.')">
+      </div>
+      <div class="gallery-item">
+        <img src="../img/imagen6.jpg" alt="Arte 6" onclick="openModal('../img/imagen6.jpg', 'Paisaje impresionista con técnicas de acuarela, que capturan la luz natural y la belleza del entorno.')">
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="Imagen seleccionada">
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Galería de Arte. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Función para abrir el modal y mostrar la imagen y descripción
+    function openModal(imageSrc, description) {
+      var modal = document.getElementById("myModal");
+      var modalImage = document.getElementById("modalImage");
+      var modalDescription = document.getElementById("modalDescription");
+
+      // Asignar la imagen correspondiente y la descripción
+      modalImage.src = imageSrc;
+      modalDescription.textContent = description;
+
+      // Mostrar el modal
+      modal.style.display = "flex";
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    }
+
+    // Cerrar el modal si se hace clic fuera de la imagen
+    window.onclick = function(event) {
+      var modal = document.getElementById("myModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
